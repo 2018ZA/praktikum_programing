@@ -6,24 +6,24 @@ class Product:
 
     def operation(self):
         """Операция, которую должен выполнять продукт."""
-        raise NotImplementedError("Метод должен быть переопределен в конкретном классе")
+        raise NotImplementedError("Метод должен быть переопределен в классе")
 
 
-# Конкретные продукты
-class ConcreteProductA(Product):
-    """Конкретный продукт А."""
+# Продукты
+class ProductA(Product):
+    """Продукт A."""
 
     def operation(self):
-        """Реализация операции для продукта А."""
-        return "Конкретный продукт A"
+        """Реализация операции для продукта A."""
+        return "продукт A"
 
 
-class ConcreteProductB(Product):
-    """Конкретный продукт B."""
+class ProductB(Product):
+    """Продукт B."""
 
     def operation(self):
         """Реализация операции для продукта B."""
-        return "Конкретный продукт B"
+        return "продукт B"
 
 
 # Абстрактный класс создателя
@@ -46,21 +46,21 @@ class Creator(ABC):
         return result
 
 
-# Конкретные создатели
-class ConcreteCreatorA(Creator):
-    """Конкретный создатель А."""
+# Создатели
+class CreatorA(Creator):
+    """Создатель A."""
 
     def factory_method(self):
-        """Создание конкретного продукта А."""
-        return ConcreteProductA()
+        """Создание продукта A."""
+        return ProductA()
 
 
-class ConcreteCreatorB(Creator):
-    """Конкретный создатель B."""
+class CreatorB(Creator):
+    """Создатель B."""
 
     def factory_method(self):
-        """Создание конкретного продукта B."""
-        return ConcreteProductB()
+        """Создание продукта B."""
+        return ProductB()
 
 
 # Демонстрация работы клиента с фабрикой
@@ -70,11 +70,11 @@ def client_code(creator: Creator):
 
 
 if __name__ == "__main__":
-    print("Пример работы фабрики с конкретным продуктом A:")
-    client_code(ConcreteCreatorA())
+    print("Пример работы фабрики с продуктом A:")
+    client_code(CreatorA())
 
-    print("\nПример работы фабрики с конкретным продуктом B:")
-    client_code(ConcreteCreatorB())
+    print("\nПример работы фабрики с продуктом B:")
+    client_code(CreatorB())
 
 
 
