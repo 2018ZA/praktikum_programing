@@ -8,19 +8,18 @@ class Implementor(ABC):
     def operation_implementation(self):
         pass
 
-# Конкретная реализация
-class ConcreteImplementorA(Implementor):
-    """Первая конкретная реализация интерфейса Implementor."""
+# Реализации
+class ImplementorA(Implementor):
+    """Первая реализация интерфейса Implementor."""
 
     def operation_implementation(self):
-        return "Конкретная реализация A"
+        return "Реализация A"
 
-# Вторая конкретная реализация
-class ConcreteImplementorB(Implementor):
-    """Вторая конкретная реализация интерфейса Implementor."""
+class ImplementorB(Implementor):
+    """Вторая реализация интерфейса Implementor."""
 
     def operation_implementation(self):
-        return "Конкретная реализация B"
+        return "Реализация B"
 
 # Абстракция
 class Abstraction:
@@ -32,9 +31,9 @@ class Abstraction:
     def operation(self):
         return self.implementor.operation_implementation()
 
-# Рефинированная абстракция
+# Расширенная абстракция
 class RefinedAbstraction(Abstraction):
-    """Конкретная реализация абстракции, которая добавляет дополнительные функциональные возможности."""
+    """Реализация абстракции, которая добавляет дополнительные функциональные возможности."""
 
     def another_operation(self):
         return f"Расширенное поведение: {self.implementor.operation_implementation()}"
@@ -45,13 +44,14 @@ def client_code(abstraction: Abstraction):
     print(f"Абстракция: {abstraction.operation()}")
 
 if __name__ == "__main__":
-    # Пример использования первой конкретной реализации
-    concrete_implementor_a = ConcreteImplementorA()
-    abstraction = Abstraction(concrete_implementor_a)
+    # Пример использования первой реализации
+    implementor_a = ImplementorA()
+    abstraction = Abstraction(implementor_a)
     client_code(abstraction)
 
-    # Пример использования второй конкретной реализации
-    concrete_implementor_b = ConcreteImplementorB()
-    refined_abstraction = RefinedAbstraction(concrete_implementor_b)
+    # Пример использования второй реализации
+    implementor_b = ImplementorB()
+    refined_abstraction = RefinedAbstraction(implementor_b)
     client_code(refined_abstraction)
     print(f"Расширенные возможности: {refined_abstraction.another_operation()}")
+
