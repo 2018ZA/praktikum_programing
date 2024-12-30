@@ -19,34 +19,34 @@ class Handler(ABC):
             return self._next_handler.handle(request)
         return None
 
-# Конкретные обработчики
-class ConcreteHandler1(Handler):
-    """Первый конкретный обработчик."""
+# Обработчики
+class Handler1(Handler):
+    """Первый обработчик."""
 
     def handle(self, request):
         """Пытается обработать запрос. Если не удается, передает его дальше по цепочке."""
         if request < 10:
-            return f'ConcreteHandler1 обработал запрос {request}'
+            return f'Handler1 обработал запрос {request}'
         else:
             return super().handle(request)
 
-class ConcreteHandler2(Handler):
-    """Второй конкретный обработчик."""
+class Handler2(Handler):
+    """Второй обработчик."""
 
     def handle(self, request):
         """Пытается обработать запрос. Если не удается, передает его дальше по цепочке."""
         if 10 <= request < 20:
-            return f'ConcreteHandler2 обработал запрос {request}'
+            return f'Handler2 обработал запрос {request}'
         else:
             return super().handle(request)
 
-class ConcreteHandler3(Handler):
-    """Третий конкретный обработчик."""
+class Handler3(Handler):
+    """Третий обработчик."""
 
     def handle(self, request):
         """Пытается обработать запрос. Если не удается, передает его дальше по цепочке."""
         if 20 <= request < 30:
-            return f'ConcreteHandler3 обработал запрос {request}'
+            return f'Handler3 обработал запрос {request}'
         else:
             return super().handle(request)
 
@@ -67,9 +67,9 @@ def client_code(handler: Handler):
 
 if __name__ == '__main__':
     # Формируем цепочку обработчиков
-    handler1 = ConcreteHandler1()
-    handler2 = ConcreteHandler2()
-    handler3 = ConcreteHandler3()
+    handler1 = Handler1()
+    handler2 = Handler2()
+    handler3 = Handler3()
     fallback_handler = FallbackHandler()
 
     handler1.set_next(handler2).set_next(handler3).set_next(fallback_handler)
